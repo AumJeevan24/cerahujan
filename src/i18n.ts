@@ -38,8 +38,24 @@ const strings = {
     en: 'Weather, heat, storms and haze for Malaysia.',
   },
   comingSoon: {
-    ms: 'Carian bandar dan kad cuaca akan datang tidak lama lagi.',
-    en: 'Town search and weather cards are coming soon.',
+    ms: 'Kad cuaca akan datang tidak lama lagi.',
+    en: 'Weather cards are coming soon.',
+  },
+  flyToTown: {
+    ms: 'Terbang ke bandar',
+    en: 'Fly to a town',
+  },
+  searchPlaceholder: {
+    ms: 'Kuching, Ipoh, Kota Bharu…',
+    en: 'Kuching, Ipoh, Kota Bharu…',
+  },
+  noTownFound: {
+    ms: 'Tiada tempat dijumpai. Cuba nama bandar atau daerah berdekatan.',
+    en: 'No place found. Try a nearby town or district.',
+  },
+  pickTownHint: {
+    ms: 'Cari bandar untuk terbang ke sana.',
+    en: 'Search for a town to fly there.',
   },
   mapLabel: {
     ms: 'Peta 3D Malaysia',
