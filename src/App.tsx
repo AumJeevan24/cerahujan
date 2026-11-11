@@ -47,8 +47,10 @@ export default function App() {
 
   const onMapReady = useCallback((map: MapLibreMap) => {
     mapRef.current = map
-    // A remembered town: show the whole country briefly, then fly there.
+    // A remembered town: show the whole country briefly, then fly there. Otherwise tilt the country view into 3D.
     if (townRef.current) flyTo(map, townRef.current)
+    else if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) map.jumpTo({ pitch: 30 })
+    else map.easeTo({ pitch: 30, duration: 1500 })
   }, [])
 
   return (

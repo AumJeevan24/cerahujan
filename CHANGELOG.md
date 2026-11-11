@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Brighter map: blue sea, greener land and parks, and buildings coloured by height (warm low-rise, glass-blue towers).
+- The map now shows only Malaysia, Singapore, Brunei and Indonesia; countries further away are hidden.
+- The opening view fits the whole country and then tilts gently into 3D.
+
 ## [0.1.0] - 2026-11-11
 
 ### Added
