@@ -37,3 +37,11 @@
     outline-offset: 2px;
   }
 }
+
+/* Phone: the panel overlaps the bottom 24px of the map, so lift the map's credits above it. */
+@media (max-width: 767px) {
+  .maplibregl-ctrl-bottom-left,
+  .maplibregl-ctrl-bottom-right {
+    margin-bottom: 24px;
+  }
+}
