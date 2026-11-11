@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Hosting on Cloudflare Pages at cerahujan.pages.dev: the live site updates when a release is published, and every pull request gets its own preview link.
+
 ### Changed
 
 - Brighter map: blue sea, greener land and parks, and buildings coloured by height (warm low-rise, glass-blue towers).
