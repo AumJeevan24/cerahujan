@@ -21,7 +21,7 @@ In early development (Phase 1). See [CHANGELOG.md](CHANGELOG.md).
 
 ## Running locally
 
-Requires Node.js 20+.
+Requires Node.js 22.12 or newer.
 
 ```bash
 npm install
