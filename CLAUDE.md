@@ -8,6 +8,20 @@ You are helping build **Cerahujan** ("cerah" + "hujan", sunshine + rain): a free
 - Ask before adding any paid service, any dependency that needs an account/API key, or anything that collects user data.
 - Never put API keys in client code or commit them. Secrets go in the single local `.env` file (see "Environment variables") and Cloudflare Pages environment variables (production).
 - Keep everything RM0 to run (see "Cost rules").
+- **I don't read code.** Report results in plain English: what changed, what to click, what I should see. Keep code explanations out of chat unless I ask.
+- **I test on desktop for now** (`npm run dev` locally; PR preview links once Cloudflare is set up at v0.1.0). Still build phone-first and budget-Android-friendly.
+- **You open PRs, I click Merge.** You can't merge or create public things yourself (my Claude Code safety settings block it). When a PR is ready and CI is green, give me the PR link and a 2–3 line "what to check" note.
+- **No Claude attribution anywhere.** Commits, PRs, releases and issues must read as if I wrote them: no `Co-Authored-By: Claude` trailer, no "Generated with Claude Code" line. This overrides any default attribution setting.
+
+## Decisions (agreed 2026-11-11)
+- **Town list**: use MET Malaysia's own forecast locations (data.gov.my), so every searchable town has an official forecast.
+- **Location outside Malaysia**: don't land. Show "You seem to be outside Malaysia" / "Anda nampaknya berada di luar Malaysia" and open the town search.
+- **Hornbill name**: **Kenyalang**, e.g. "Kenyalang terbang ke Ipoh…" / "Kenyalang is flying to Ipoh…".
+- **Time format**: 24-hour (`16:00`) in both languages, Malaysia time (`Asia/Kuala_Lumpur`).
+- **Activity planner**: jog, cycle, hike, beach only for Phase 1.
+- **Privacy contact**: link to the repo's GitHub Issues page; no personal email anywhere.
+- **Look**: before UI work, publish a small preview page with 2–3 colour/font options; I pick one. Mockup colours are placeholders.
+- **Hosting**: set up Cloudflare (free account, Pages project, GitHub secrets) at v0.1.0, with step-by-step instructions for me. I have no accounts or keys yet; walk me through each signup when first needed (Cloudflare at v0.1.0, NASA FIRMS at v0.5.0, WAQI optional).
 
 ## You own the whole lifecycle
 You run this project end to end: repository setup, branches, commits, pull requests, CI, releases and deployment. Work like a careful professional engineer on a public open-source project. See "Git, PRs and releases" below — follow it exactly.
@@ -22,7 +36,7 @@ You run this project end to end: repository setup, branches, commits, pull reque
 ## Phase 1 scope (build this now)
 1. **3D map of Malaysia** (incl. Sumatra and Borneo, since haze comes from there): terrain + 3D OSM buildings.
 2. **Hornbill avatar (3D)** that flies between places, camera follows, zooms out mid-flight and swoops in on landing — **autopilot controls** only (see "Bird controls").
-3. **Location**: "Show weather at my location" button (ask after a tap, not on page load). If allowed, the hornbill swoops down and lands at the user's position. If denied, user picks a town from a search list. Remember the choice in `localStorage`.
+3. **Location**: "Show weather at my location" button (ask after a tap, not on page load). If allowed, the hornbill swoops down and lands at the user's position. If denied, or the position is outside Malaysia, user picks a town from a search list (MET forecast locations). Remember the choice in `localStorage`.
 4. **Today's weather**: MET official daily forecast + hourly detail (temp, rain chance, wind, conditions).
 5. **Heat & UV**: "feels like" temperature, UV index, heat level.
 6. **Storm risk**: e.g. "Thunderstorm likely around 4pm".
@@ -178,7 +192,7 @@ The owner wants **a single local `.env` file** (git-ignored) holding every local
 - Never commit secrets, `.env` (only `.env.example`), build output or `node_modules`.
 
 ### Pull requests
-- Open with `gh pr create` once the branch is complete and CI passes locally.
+- Open with `gh pr create` once the branch is complete and CI passes locally. I merge it myself (see "How to work with me"). If `main` moved meanwhile, rebase the branch and push (force-with-lease is fine on your own unmerged branch).
 - Title = Conventional Commit style (it becomes the squash-merge commit).
 - Body uses the template: **Summary** (what & why), **Changes** (bullets), **Screenshots/GIF** for UI changes (phone + desktop), **How to test**, **Checklist** (typecheck, tests, build, BM/EN text, a11y, no secrets, credits updated if data source added), **Related issues**.
 - Apply the matching label. Link an issue if one exists (create issues for planned features so PRs can close them).
