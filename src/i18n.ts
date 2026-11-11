@@ -38,8 +38,16 @@ const strings = {
     en: 'Weather, heat, storms and haze for Malaysia.',
   },
   comingSoon: {
-    ms: 'Peta 3D akan datang tidak lama lagi.',
-    en: 'The 3D map is coming soon.',
+    ms: 'Carian bandar dan kad cuaca akan datang tidak lama lagi.',
+    en: 'Town search and weather cards are coming soon.',
+  },
+  mapLabel: {
+    ms: 'Peta 3D Malaysia',
+    en: '3D map of Malaysia',
+  },
+  noWebgl: {
+    ms: 'Peranti atau pelayar ini tidak menyokong WebGL2, jadi peta 3D tidak dapat dipaparkan. Cuba versi terkini Chrome, Edge, Firefox atau Safari.',
+    en: "This device or browser doesn't support WebGL2, so the 3D map can't be shown. Try the latest Chrome, Edge, Firefox or Safari.",
   },
   switchLang: {
     ms: 'Tukar ke Bahasa Inggeris',
