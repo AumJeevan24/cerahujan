@@ -15,6 +15,10 @@ Cerahujan ("cerah" + "hujan", sunshine + rain) is a free, phone-first web app. A
 
 *Screenshot coming soon.*
 
+## Live site
+
+https://cerahujan.pages.dev (updated with each release). Every pull request gets its own preview link.
+
 ## Status
 
 In early development (Phase 1). See [CHANGELOG.md](CHANGELOG.md).
@@ -26,7 +30,7 @@ Requires Node.js 22.12 or newer.
 ```bash
 npm install
 npm run dev        # UI only, calls Open-Meteo directly from the browser
-npm run preview    # full stack with Cloudflare Pages Functions (wrangler)
+npm run preview    # production build served by Cloudflare's local Pages server (wrangler)
 npm test           # unit tests
 npm run typecheck
 ```
