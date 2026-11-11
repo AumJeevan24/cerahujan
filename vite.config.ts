@@ -6,8 +6,8 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
-    // MapLibre alone is ~1 MB minified and is already split into its own lazily loaded chunk.
-    chunkSizeWarningLimit: 1200,
+    // MapLibre + three.js (~1.7 MB minified, ~450 KB gzipped) are in their own chunk, loaded after the first screen.
+    chunkSizeWarningLimit: 1800,
   },
   test: {
     include: ['src/**/*.test.ts'],

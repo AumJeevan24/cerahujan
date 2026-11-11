@@ -5,9 +5,11 @@ import { searchTowns, type Town, typeLabel } from './towns'
 interface Props {
   lang: Lang
   onSelect: (town: Town) => void
+  /** Keep the label for screen readers only (e.g. when the box floats over the flight view). */
+  hideLabel?: boolean
 }
 
-export default function TownSearch({ lang, onSelect }: Props) {
+export default function TownSearch({ lang, onSelect, hideLabel = false }: Props) {
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(0)
@@ -40,7 +42,7 @@ export default function TownSearch({ lang, onSelect }: Props) {
 
   return (
     <div className="relative flex flex-col gap-1.5">
-      <label htmlFor={inputId} className="text-sm font-semibold text-sub">
+      <label htmlFor={inputId} className={hideLabel ? 'sr-only' : 'text-sm font-semibold text-sub'}>
         {t('flyToTown', lang)}
       </label>
       <input
@@ -53,7 +55,7 @@ export default function TownSearch({ lang, onSelect }: Props) {
         aria-activedescendant={showList && results[active] ? `${listId}-${results[active].id}` : undefined}
         autoComplete="off"
         enterKeyHint="go"
-        placeholder={t('searchPlaceholder', lang)}
+        placeholder={hideLabel ? `${t('flyToTown', lang)}…` : t('searchPlaceholder', lang)}
         value={query}
         onChange={(e) => {
           setQuery(e.target.value)

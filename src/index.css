@@ -38,10 +38,9 @@
   }
 }
 
-/* Phone: the panel overlaps the bottom 24px of the map, so lift the map's credits above it. */
-@media (max-width: 767px) {
-  .maplibregl-ctrl-bottom-left,
+/* Touch screens: lift the map's credits above the joystick and boost button. */
+@media (pointer: coarse) {
   .maplibregl-ctrl-bottom-right {
-    margin-bottom: 24px;
+    margin-bottom: 9.5rem;
   }
 }
