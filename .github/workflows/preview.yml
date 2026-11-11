@@ -48,10 +48,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
           COMMIT_URL: ${{ steps.deploy.outputs.deployment-url }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           body="**Preview:** ${ALIAS_URL:-$COMMIT_URL}
 
-          This exact commit (${GITHUB_SHA::7}): $COMMIT_URL"
+          This exact commit (${HEAD_SHA::7}): $COMMIT_URL"
           gh pr comment "${{ github.event.pull_request.number }}" --repo "$GITHUB_REPOSITORY" --edit-last --create-if-none --body "$body"
 
       - name: Skip (no Cloudflare token yet)
