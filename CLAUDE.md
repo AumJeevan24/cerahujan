@@ -10,7 +10,8 @@ You are helping build **Cerahujan** ("cerah" + "hujan", sunshine + rain): a free
 - Keep everything RM0 to run (see "Cost rules").
 - **I don't read code.** Report results in plain English: what changed, what to click, what I should see. Keep code explanations out of chat unless I ask.
 - **I test on desktop for now** (`npm run dev` locally; PR preview links once Cloudflare is set up at v0.1.0). Still build phone-first and budget-Android-friendly.
-- **You open PRs, I click Merge.** You can't merge or create public things yourself (my Claude Code safety settings block it). When a PR is ready and CI is green, give me the PR link and a 2–3 line "what to check" note.
+- **You do everything, including merging.** Open the PR, wait for CI to go green, then squash-merge it yourself (`gh pr merge --squash --delete-branch` is allowed in my local Claude Code settings). Never merge with failing or missing CI. After merging, tell me in plain English what changed and how to see it. Creating new public things (repos, releases, deployments) may still be blocked by my safety settings — if so, give me the exact command to run.
+- Don't force-push; my safety settings block it. To update a branch with `main`, merge `main` into it (the squash merge keeps `main` linear anyway).
 - **No Claude attribution anywhere.** Commits, PRs, releases and issues must read as if I wrote them: no `Co-Authored-By: Claude` trailer, no "Generated with Claude Code" line. This overrides any default attribution setting.
 
 ## Decisions (agreed 2026-11-11)
@@ -21,6 +22,7 @@ You are helping build **Cerahujan** ("cerah" + "hujan", sunshine + rain): a free
 - **Activity planner**: jog, cycle, hike, beach only for Phase 1.
 - **Privacy contact**: link to the repo's GitHub Issues page; no personal email anywhere.
 - **Look**: before UI work, publish a small preview page with 2–3 colour/font options; I pick one. Mockup colours are placeholders.
+- **Your local settings**: `.claude/settings.local.json` (git-ignored) allows `gh pr merge` and turns off Claude attribution.
 - **Hosting**: set up Cloudflare (free account, Pages project, GitHub secrets) at v0.1.0, with step-by-step instructions for me. I have no accounts or keys yet; walk me through each signup when first needed (Cloudflare at v0.1.0, NASA FIRMS at v0.5.0, WAQI optional).
 
 ## You own the whole lifecycle
@@ -181,7 +183,7 @@ The owner wants **a single local `.env` file** (git-ignored) holding every local
 ### Branches
 - `main` is always releasable. **Never commit directly to `main`** after the initial commit.
 - One branch per piece of work, named `<type>/<short-kebab-description>`, e.g. `feat/3d-terrain-map`, `feat/hornbill-flight`, `fix/uv-index-rounding`, `docs/privacy-notice`.
-- Keep branches short-lived and focused on one feature or fix. Rebase on `main` before opening/merging a PR.
+- Keep branches short-lived and focused on one feature or fix. Bring the branch up to date with `main` before opening/merging a PR (merge `main` in; no force-pushes).
 
 ### Commits — professional, never spammy
 - Follow **Conventional Commits**: `type(scope): imperative summary` (≤ 72 chars), e.g. `feat(map): add terrain and 3D buildings`, `fix(scores): clamp humidity factor to 0–1`.
@@ -192,7 +194,7 @@ The owner wants **a single local `.env` file** (git-ignored) holding every local
 - Never commit secrets, `.env` (only `.env.example`), build output or `node_modules`.
 
 ### Pull requests
-- Open with `gh pr create` once the branch is complete and CI passes locally. I merge it myself (see "How to work with me"). If `main` moved meanwhile, rebase the branch and push (force-with-lease is fine on your own unmerged branch).
+- Open with `gh pr create` once the branch is complete and CI passes locally. You merge it once CI is green (see "How to work with me"). If `main` moved meanwhile, merge `main` into the branch and push (no force-pushes).
 - Title = Conventional Commit style (it becomes the squash-merge commit).
 - Body uses the template: **Summary** (what & why), **Changes** (bullets), **Screenshots/GIF** for UI changes (phone + desktop), **How to test**, **Checklist** (typecheck, tests, build, BM/EN text, a11y, no secrets, credits updated if data source added), **Related issues**.
 - Apply the matching label. Link an issue if one exists (create issues for planned features so PRs can close them).
