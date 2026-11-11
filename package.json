@@ -1,7 +1,7 @@
 {
   "name": "cerahujan",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Weather, heat, storms and haze for Malaysia on a 3D map. Free, bilingual (BM/EN).",
   "license": "MIT",
   "type": "module",
