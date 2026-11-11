@@ -1,0 +1,54 @@
+name: Bug report / Laporan pepijat
+description: Something isn't working as expected.
+title: "fix: "
+labels: ["fix"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Cerahujan is not an official warning service — for urgent weather or disaster information, check MET Malaysia, APIMS, Public InfoBanjir or NADMA.
+        **Please don't include your exact location or personal information.**
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you see, and what did you expect to see instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the app
+        2. Search for "Ipoh"
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: e.g. Samsung Galaxy A14, Chrome 131 / Windows 11, Firefox 133
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: App language
+      options:
+        - Bahasa Malaysia
+        - English
+  - type: dropdown
+    id: mode
+    attributes:
+      label: 3D mode
+      options:
+        - Normal
+        - Lite
+        - Not sure
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or screen recording
+      description: Optional, but very helpful.
