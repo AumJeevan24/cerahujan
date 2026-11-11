@@ -9,4 +9,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Project brief, README, license and repository conventions.
+- README, license and repository conventions.
+- App scaffold (Vite, React, TypeScript, Tailwind CSS, Vitest) with the "Langit Cerah" look and a BM | EN language toggle that remembers your choice.

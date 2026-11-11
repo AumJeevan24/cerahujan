@@ -1,0 +1,39 @@
+@import '@fontsource-variable/plus-jakarta-sans';
+@import 'tailwindcss';
+
+/* Look A "Langit Cerah". Status colours are for data (UV, storm, drying, haze), never decoration. */
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-ink: #12233d;
+  --color-sub: #4b5b71;
+  --color-sheet: #f4f7fb;
+  --color-card: #ffffff;
+  --color-line: #d5dce6;
+  --color-hud: rgb(18 35 61 / 0.86);
+  --color-accent: #2563eb;
+  --color-sun: #f5b935;
+
+  --color-uv: #b3400e;
+  --color-storm: #1d4fc4;
+  --color-good: #157347;
+  --color-haze: #8a5200;
+
+  --radius-card: 16px;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-sheet font-sans text-ink antialiased;
+    font-size: 15px;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
