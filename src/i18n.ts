@@ -37,6 +37,78 @@ const strings = {
     ms: 'Cuaca, panas, ribut dan jerebu untuk Malaysia.',
     en: 'Weather, heat, storms and haze for Malaysia.',
   },
+  hudLabel: {
+    ms: 'Cuaca di bawah Kenyalang',
+    en: 'Weather below Kenyalang',
+  },
+  over: {
+    ms: 'Di atas',
+    en: 'Over',
+  },
+  near: {
+    ms: 'Dekat',
+    en: 'Near',
+  },
+  rainNext3h: {
+    ms: 'Hujan 3 jam',
+    en: 'Rain next 3h',
+  },
+  details: {
+    ms: 'Butiran cuaca',
+    en: 'Weather details',
+  },
+  close: {
+    ms: 'Tutup',
+    en: 'Close',
+  },
+  flightLabel: {
+    ms: 'Paparan penerbangan Kenyalang. Guna kekunci anak panah atau WASD untuk terbang.',
+    en: "Kenyalang's flight view. Use the arrow keys or WASD to fly.",
+  },
+  joystickLabel: {
+    ms: 'Kayu bedik: kiri dan kanan untuk membelok, atas untuk naik, bawah untuk turun',
+    en: 'Joystick: left and right to turn, up to climb, down to dive',
+  },
+  boost: {
+    ms: 'Laju',
+    en: 'Boost',
+  },
+  flyingTo: {
+    ms: 'Terbang ke',
+    en: 'Flying to',
+  },
+  takeOverHint: {
+    ms: 'Kemudi untuk ambil alih',
+    en: 'Steer to take over',
+  },
+  startTitle: {
+    ms: 'Jadi Kenyalang. Terbang merentas Malaysia dan lihat cuaca sebenar di bawah anda.',
+    en: 'Be Kenyalang. Fly across Malaysia and see the real weather below you.',
+  },
+  startNearMe: {
+    ms: 'Mula dekat saya',
+    en: 'Start near me',
+  },
+  startKl: {
+    ms: 'Mula di Kuala Lumpur',
+    en: 'Start at Kuala Lumpur',
+  },
+  locationNote: {
+    ms: 'Lokasi anda hanya digunakan pada peranti ini.',
+    en: 'Your location stays on this device.',
+  },
+  outsideMalaysia: {
+    ms: 'Anda nampaknya berada di luar Malaysia, jadi kita mula di Kuala Lumpur.',
+    en: 'You seem to be outside Malaysia, so we’ll start at Kuala Lumpur.',
+  },
+  locationDenied: {
+    ms: 'Lokasi tidak dapat digunakan, jadi kita mula di Kuala Lumpur.',
+    en: 'Couldn’t use your location, so we’ll start at Kuala Lumpur.',
+  },
+  keysHint: {
+    ms: '← → belok · ↑ naik · ↓ turun · Shift laju · Klik peta dahulu',
+    en: '← → turn · ↑ climb · ↓ dive · Shift boost · Click the view first',
+  },
   loadingWeather: {
     ms: 'Memuatkan cuaca…',
     en: 'Loading the weather…',

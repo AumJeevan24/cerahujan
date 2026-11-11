@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { findTown, normalize, searchTowns, TOWNS, type Town } from './towns'
+import { findTown, nearestPlace, normalize, searchTowns, TOWNS, type Town } from './towns'
 
 const sample: Town[] = [
   { id: 'Tn187', name: 'Kuching', type: 'Tn', state: 'Sarawak', lat: 1.55, lon: 110.34 },
@@ -66,6 +66,25 @@ describe('searchTowns', () => {
 
   it('respects the limit', () => {
     expect(searchTowns('k', sample, 2)).toHaveLength(2)
+  })
+})
+
+describe('nearestPlace', () => {
+  it('prefers a nearby town over a closer district centre', () => {
+    // A point between KL town centre and nothing else in the sample: KL is nearest.
+    expect(nearestPlace(101.7, 3.16, sample)?.town.id).toBe('Tn079')
+    // Near the Kuching division centre (Dv501 at 1.4, 110.4) but Kuching town is within 20 km.
+    expect(nearestPlace(110.39, 1.42, sample)?.town.id).toBe('Tn187')
+  })
+
+  it('falls back to any place type when no town is within 20 km', () => {
+    // Up in the Kinabalu park, far from sample towns.
+    expect(nearestPlace(116.55, 6.08, sample)?.town.id).toBe('Rc501')
+  })
+
+  it('reports the distance in km', () => {
+    const hit = nearestPlace(101.69, 3.15, sample)
+    expect(hit?.km).toBeLessThan(1)
   })
 })
 

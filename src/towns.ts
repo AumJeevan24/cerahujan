@@ -121,6 +121,30 @@ export function searchTowns(query: string, towns: readonly Town[] = TOWNS, limit
   return result
 }
 
+function km(aLng: number, aLat: number, bLng: number, bLat: number): number {
+  const r = Math.PI / 180
+  const h =
+    Math.sin(((bLat - aLat) * r) / 2) ** 2 +
+    Math.cos(aLat * r) * Math.cos(bLat * r) * Math.sin(((bLng - aLng) * r) / 2) ** 2
+  return 2 * 6371 * Math.asin(Math.sqrt(h))
+}
+
+/**
+ * The MET forecast place to show for a point: the nearest town if one is within 20 km,
+ * otherwise the nearest place of any kind (district, division, recreation spot).
+ * Returns the place and how far away it is.
+ */
+export function nearestPlace(lng: number, lat: number, towns: readonly Town[] = TOWNS): { town: Town; km: number } | null {
+  let best: { town: Town; km: number } | null = null
+  let bestTown: { town: Town; km: number } | null = null
+  for (const town of towns) {
+    const d = km(lng, lat, town.lon, town.lat)
+    if (!best || d < best.km) best = { town, km: d }
+    if (town.type === 'Tn' && (!bestTown || d < bestTown.km)) bestTown = { town, km: d }
+  }
+  return bestTown && bestTown.km <= 20 ? bestTown : best
+}
+
 export function findTown(id: string, towns: readonly Town[] = TOWNS): Town | undefined {
   return towns.find((t) => t.id === id)
 }
