@@ -34,3 +34,6 @@ Thumbs.db
 # Private local files (not part of the project)
 .claude/settings.local.json
 CLAUDE.md
+
+# Geocoding cache for make-towns.mjs
+.towns-cache.json

@@ -43,6 +43,7 @@ Cerahujan uses only free, open data. All data belongs to its providers.
 | PM2.5 / air quality forecast | [Open-Meteo](https://open-meteo.com/) with Copernicus Atmosphere Monitoring Service (CAMS) |
 | Fire hotspots | [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/) (VIIRS) |
 | Official forecasts and warnings | MET Malaysia via [data.gov.my](https://data.gov.my/) |
+| Place locations for the town list | [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors (via Nominatim), looked up once with `make-towns.mjs` |
 | Air quality stations | [World Air Quality Index Project (WAQI)](https://waqi.info/) and DOE Malaysia |
 | Base map | [OpenFreeMap](https://openfreemap.org/), © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors |
 | Terrain | [AWS Terrain Tiles](https://registry.opendata.aws/terrain-tiles/) (Mapzen / Tilezen) |
