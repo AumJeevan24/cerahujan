@@ -3,8 +3,9 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { cameraFor, loadTownId, saveTownId } from './camera'
 import { hasWebGL2 } from './device'
 import { type Lang, loadLang, saveLang, t } from './i18n'
-import { findTown, type Town, typeLabel } from './towns'
+import { findTown, type Town } from './towns'
 import TownSearch from './TownSearch'
+import WeatherPanel from './WeatherPanel'
 
 // The map library is ~1 MB, so it loads after the panel: weather text shows first on slow phones.
 const MapView = lazy(() => import('./MapView'))
@@ -68,7 +69,7 @@ export default function App() {
         )}
       </div>
 
-      <aside className="relative z-10 -mt-6 flex max-h-[45%] flex-col gap-4 overflow-y-auto rounded-t-3xl bg-sheet px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgb(18_35_61/0.15)] md:order-1 md:mt-0 md:max-h-none md:w-[380px] md:shrink-0 md:rounded-none md:px-5 md:pt-5 md:shadow-none">
+      <aside className="relative z-10 -mt-6 flex max-h-[55%] flex-col gap-4 overflow-y-auto rounded-t-3xl bg-sheet px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgb(18_35_61/0.15)] md:order-1 md:mt-0 md:max-h-none md:w-[380px] md:shrink-0 md:rounded-none md:px-5 md:pt-5 md:shadow-none">
         <div aria-hidden="true" className="mx-auto h-1.5 w-10 shrink-0 rounded-full bg-line md:hidden" />
         <div className="flex items-center gap-3">
           <h1 className="grow text-2xl font-extrabold tracking-tight">Cerahujan</h1>
@@ -86,19 +87,11 @@ export default function App() {
 
         <TownSearch lang={lang} onSelect={selectTown} />
 
-        <section aria-live="polite" className="flex flex-col gap-1 rounded-card bg-card p-4">
-          {town ? (
-            <>
-              <span className="text-xs font-semibold tracking-wide text-sub uppercase">{typeLabel(town.type, lang)}</span>
-              <h2 className="text-xl font-bold">{town.name}</h2>
-              <p className="text-sub">{town.state}</p>
-            </>
-          ) : (
-            <p className="text-sub">{t('pickTownHint', lang)}</p>
-          )}
-        </section>
-
-        <p className="text-sm text-sub">{t('comingSoon', lang)}</p>
+        {town ? (
+          <WeatherPanel town={town} lang={lang} />
+        ) : (
+          <p className="rounded-card bg-card p-4 text-sub">{t('pickTownHint', lang)}</p>
+        )}
       </aside>
     </div>
   )
