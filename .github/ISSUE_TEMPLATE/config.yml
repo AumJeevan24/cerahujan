@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Official weather forecasts and warnings (MET Malaysia)
+    url: https://www.met.gov.my/
+    about: Cerahujan is not an official warning service.
+  - name: Official air quality (APIMS, DOE Malaysia)
+    url: https://eqms.doe.gov.my/APIMS/main
+    about: Malaysia's official Air Pollutant Index.

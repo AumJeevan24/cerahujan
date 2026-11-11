@@ -1,0 +1,27 @@
+name: Feature request / Cadangan ciri
+description: Suggest an idea or improvement.
+title: "feat: "
+labels: ["feat"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the situation, e.g. "When I plan a hike, I can't tell..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to see?
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Data source (if any)
+      description: Cerahujan must stay free to run. Is there a free, open data source for this?
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered
