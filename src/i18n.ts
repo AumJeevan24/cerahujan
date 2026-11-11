@@ -37,9 +37,77 @@ const strings = {
     ms: 'Cuaca, panas, ribut dan jerebu untuk Malaysia.',
     en: 'Weather, heat, storms and haze for Malaysia.',
   },
-  comingSoon: {
-    ms: 'Kad cuaca akan datang tidak lama lagi.',
-    en: 'Weather cards are coming soon.',
+  loadingWeather: {
+    ms: 'Memuatkan cuaca…',
+    en: 'Loading the weather…',
+  },
+  weatherError: {
+    ms: 'Cuaca tidak dapat dimuatkan. Semak sambungan internet anda.',
+    en: "Couldn't load the weather. Check your internet connection.",
+  },
+  tryAgain: {
+    ms: 'Cuba lagi',
+    en: 'Try again',
+  },
+  feelsLike: {
+    ms: 'Rasa seperti',
+    en: 'Feels like',
+  },
+  uv: {
+    ms: 'UV',
+    en: 'UV',
+  },
+  heat: {
+    ms: 'Panas',
+    en: 'Heat',
+  },
+  storm: {
+    ms: 'Ribut petir',
+    en: 'Thunderstorms',
+  },
+  rainChance: {
+    ms: 'Peluang hujan',
+    en: 'Chance of rain',
+  },
+  todayMax: {
+    ms: 'maks. hari ini',
+    en: 'max today',
+  },
+  next12h: {
+    ms: '12 jam akan datang',
+    en: 'Next 12 hours',
+  },
+  metToday: {
+    ms: 'Ramalan rasmi MET hari ini',
+    en: "MET's official forecast today",
+  },
+  morning: {
+    ms: 'Pagi',
+    en: 'Morning',
+  },
+  afternoon: {
+    ms: 'Petang',
+    en: 'Afternoon',
+  },
+  night: {
+    ms: 'Malam',
+    en: 'Night',
+  },
+  metUnavailable: {
+    ms: 'Ramalan MET tidak tersedia buat masa ini.',
+    en: "MET's forecast isn't available right now.",
+  },
+  updated: {
+    ms: 'Dikemas kini',
+    en: 'Updated',
+  },
+  estimateNote: {
+    ms: 'Anggaran sahaja, bukan amaran rasmi.',
+    en: 'Estimates only, not official warnings.',
+  },
+  officialSources: {
+    ms: 'Sumber rasmi:',
+    en: 'Official sources:',
   },
   flyToTown: {
     ms: 'Terbang ke bandar',

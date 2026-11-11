@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Weather for the chosen place: temperature now, "feels like", UV level, heat level, thunderstorm risk ("Thunderstorm likely around 16:00"), chance of rain, the next 12 hours, and MET Malaysia's official forecast for today (translated to English when the app is in English). Every card is marked as an estimate, with a link to MET.
+
 - Hosting on Cloudflare Pages at cerahujan.pages.dev: the live site updates when a release is published, and every pull request gets its own preview link.
 
 ### Changed
