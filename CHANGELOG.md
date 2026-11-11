@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Brighter map: blue sea, greener land and parks, and buildings coloured by height (warm low-rise, glass-blue towers).
 - The map now shows only Malaysia, Singapore, Brunei and Indonesia; countries further away are hidden.
 - The opening view fits the whole country and then tilts gently into 3D.
+- Real satellite imagery (Sentinel-2 cloudless 2025) for the landscape when zoomed out, with roads and names on top; it fades into the drawn map as you zoom into a town.
+- More realistic 3D buildings: plaster, concrete and glass by height, varied shades, and afternoon sunlight with lit and shaded walls.
 
 ## [0.1.0] - 2026-11-11
 

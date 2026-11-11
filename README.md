@@ -47,6 +47,7 @@ Cerahujan uses only free, open data. All data belongs to its providers.
 | Air quality stations | [World Air Quality Index Project (WAQI)](https://waqi.info/) and DOE Malaysia |
 | Base map | [OpenFreeMap](https://openfreemap.org/), © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors |
 | Terrain | [AWS Terrain Tiles](https://registry.opendata.aws/terrain-tiles/) (Mapzen / Tilezen) |
+| Satellite imagery | [EOxCloudless 2025](https://cloudless.eox.at) by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2025), [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
 
 ## License
 
