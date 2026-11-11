@@ -1,8 +1,11 @@
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { type LngLatBoundsLike, Map as MapLibreMap, setWorkerUrl } from 'maplibre-gl'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
+import type { MultiPolygon } from 'geojson'
 import { useEffect, useRef } from 'react'
 import { currentDevice, renderSettings } from './device'
+import { applyRegionLook } from './mapStyle'
+import outline from './region.json'
 
 // MapLibre finds its tile-processing worker next to its own file, which breaks once bundled.
 // Ship the worker as a separate asset and point MapLibre at it.
@@ -42,7 +45,7 @@ export default function MapView({ label, onReady }: Props) {
       style: STYLE_URL,
       bounds: MALAYSIA,
       fitBoundsOptions: { padding: narrow ? 8 : 40 },
-      pitch: 55,
+      pitch: 0, // fit the country flat, then tilt once loaded (fitting while tilted leaves Malaysia small)
       minPitch: 0,
       maxPitch: 75,
       maxBounds: MAX_BOUNDS,
@@ -55,6 +58,7 @@ export default function MapView({ label, onReady }: Props) {
     })
 
     map.on('style.load', () => {
+      applyRegionLook(map, outline as MultiPolygon)
       map.addSource('terrain', {
         type: 'raster-dem',
         tiles: [TERRAIN_TILES],
@@ -63,7 +67,7 @@ export default function MapView({ label, onReady }: Props) {
         maxzoom: 15,
       })
       map.setTerrain({ source: 'terrain', exaggeration: settings.terrainExaggeration })
-      map.setSky({ 'sky-color': '#9CC3EE', 'horizon-color': '#F2E6CF', 'fog-color': '#DCE8F3' })
+      map.setSky({ 'sky-color': '#8EC3EA', 'horizon-color': '#E8F1F8', 'fog-color': '#D6E8F5' })
       onReadyRef.current?.(map)
     })
 

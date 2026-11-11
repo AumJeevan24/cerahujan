@@ -1,19 +1,33 @@
-// Builds src/towns.json: MET Malaysia's forecast locations with coordinates and state.
+// Builds the app's static data files from open data, once:
+//
+// 1. src/region.json: one outline covering Malaysia, Singapore, Brunei and Indonesia (land plus
+//    coastal sea) from OpenStreetMap, simplified and merged. The map hides everything outside it.
+// 2. src/towns.json: MET Malaysia's forecast locations with coordinates and state.
 //
 // MET's API (api.data.gov.my/weather/forecast) gives only an id and a name per place.
 // This looks each place up once in OpenStreetMap's Nominatim (1 request per second,
 // as its usage policy asks) and saves the result, so the app never geocodes at runtime.
 //
-// Run:  node make-towns.mjs        (takes ~8 minutes)
+// Run:  node make-data.mjs        (takes ~8 minutes the first time)
 // Then review the "check" lines it prints, add fixes to OVERRIDES below, and run again
 // (lookups are cached in .towns-cache.json, so a re-run is quick).
 
 import { readFileSync, writeFileSync } from 'node:fs'
+import polygonClipping from 'polygon-clipping'
 
 const MET_URL = 'https://api.data.gov.my/weather/forecast/'
 const NOMINATIM = 'https://nominatim.openstreetmap.org/search'
 const USER_AGENT = 'cerahujan-towns-build/1.0 (+https://github.com/AumJeevan24/cerahujan)'
 const OUT = 'src/towns.json'
+const REGION_OUT = 'src/region.json'
+
+/** Countries the map shows, with how much to simplify each outline (degrees; ~0.01 = 1 km). */
+const REGION = {
+  Malaysia: 0.002, // finer: coarser outlines cut off border towns such as Rantau Panjang
+  Singapore: 0.005,
+  Brunei: 0.005,
+  Indonesia: 0.01,
+}
 const CACHE = '.towns-cache.json' // git-ignored; lets a re-run skip places already looked up
 
 /** Hand-checked fixes, by MET id: a clearer search text where a name is ambiguous or spelled
@@ -82,7 +96,33 @@ function pick(results, type) {
   }
 }
 
+/** Country boundaries from OpenStreetMap (they include coastal waters), merged into one shape so overlaps don't leave gaps. */
+async function writeRegion() {
+  const shapes = []
+  for (const [country, threshold] of Object.entries(REGION)) {
+    const params = new URLSearchParams({
+      q: country,
+      featureType: 'country',
+      format: 'geojson',
+      polygon_geojson: '1',
+      polygon_threshold: String(threshold),
+      limit: '1',
+    })
+    const res = await fetch(`${NOMINATIM}?${params}`, { headers: { 'User-Agent': USER_AGENT } })
+    if (!res.ok) throw new Error(`Nominatim ${res.status} for ${country}`)
+    const { geometry } = (await res.json()).features[0]
+    shapes.push(geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates)
+    await sleep(1100)
+  }
+  const merged = polygonClipping.union(...shapes)
+  const round = (c) => (typeof c[0] === 'number' ? [+c[0].toFixed(4), +c[1].toFixed(4)] : c.map(round))
+  writeFileSync(REGION_OUT, JSON.stringify({ type: 'MultiPolygon', coordinates: round(merged) }) + '\n')
+  console.log(`Wrote ${Object.keys(REGION).join(', ')} outline to ${REGION_OUT} (${merged.length} parts)`)
+}
+
 async function main() {
+  await writeRegion()
+
   const cache = (() => {
     try {
       return JSON.parse(readFileSync(CACHE, 'utf8'))

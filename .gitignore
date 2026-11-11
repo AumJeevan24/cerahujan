@@ -35,5 +35,5 @@ Thumbs.db
 .claude/settings.local.json
 CLAUDE.md
 
-# Geocoding cache for make-towns.mjs
+# Geocoding cache for make-data.mjs
 .towns-cache.json
